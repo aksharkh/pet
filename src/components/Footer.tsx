@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export const Footer = () => {
   return (
-    <footer className="bg-[var(--color-bruniverse-dark)] text-white pt-24 pb-8 relative overflow-hidden border-t-8 border-[var(--color-bruniverse-dark)]">
+    <footer className="bg-[var(--color-bruniverse-dark)] text-white pt-24 pb-8 relative overflow-hidden">
       
       {/* Animated peeking dog */}
       <motion.img 
@@ -43,8 +43,8 @@ export const Footer = () => {
             <ul className="space-y-4 font-outfit text-xl font-bold">
               <li><Link to="/" className="hover:text-[var(--color-bruniverse-blue)] transition-colors hover:pl-2">Home</Link></li>
               <li><a href="#services" className="hover:text-[var(--color-bruniverse-green)] transition-colors hover:pl-2">Services</a></li>
-              <li><a href="#pricing" className="hover:text-[var(--color-bruniverse-yellow)] transition-colors hover:pl-2">Pricing Plans</a></li>
-              <li><Link to="/survey" className="hover:text-[var(--color-bruniverse-peach)] transition-colors hover:pl-2">Join Community</Link></li>
+              <li><Link to="/survey" className="hover:text-[var(--color-bruniverse-peach)] transition-colors hover:pl-2">Pet Survey</Link></li>
+              <li><Link to="/register" className="hover:text-[var(--color-bruniverse-yellow)] transition-colors hover:pl-2">Join Community</Link></li>
             </ul>
           </div>
           

@@ -85,11 +85,11 @@ export const PricingSubscription = () => {
   };
 
   return (
-    <section id="pricing" className="py-24 bg-[var(--color-bruniverse-yellow)] relative overflow-hidden">
-      {/* Background patterns */}
-      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(var(--color-bruniverse-dark) 2px, transparent 2px)', backgroundSize: '30px 30px' }}></div>
+    <section id="pricing" className="py-32 bg-[var(--color-bruniverse-yellow)] relative overflow-visible -mt-1">
+      {/* Background patterns - moved down to avoid divider overlap */}
+      <div className="absolute inset-0 opacity-10 mt-20" style={{ backgroundImage: 'radial-gradient(var(--color-bruniverse-dark) 2px, transparent 2px)', backgroundSize: '30px 30px' }}></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-10">
         <div className="text-center mb-20">
           <motion.h2 
             initial={{ scale: 0.9, opacity: 0 }}
@@ -145,6 +145,13 @@ export const PricingSubscription = () => {
             </motion.div>
           ))}
         </div>
+      </div>
+
+      {/* Zigzag bottom divider connecting to Testimonials (Green) */}
+      <div className="wave-divider" style={{ bottom: '-4px', zIndex: 5 }}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-[60px]">
+          <path d="M0,120 L0,0 L60,60 L120,0 L180,60 L240,0 L300,60 L360,0 L420,60 L480,0 L540,60 L600,0 L660,60 L720,0 L780,60 L840,0 L900,60 L960,0 L1020,60 L1080,0 L1140,60 L1200,0 L1200,120 Z" className="fill-[var(--color-bruniverse-green)] stroke-[var(--color-bruniverse-dark)] stroke-[4px]"></path>
+        </svg>
       </div>
     </section>
   );

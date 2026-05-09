@@ -5,10 +5,6 @@ import { motion } from 'framer-motion';
 
 export const Survey = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    city: '',
     petType: '',
     petAge: '',
     petBreed: '',
@@ -43,10 +39,6 @@ export const Survey = () => {
         .from('pet_parents_survey')
         .insert([
           {
-            full_name: formData.fullName,
-            email: formData.email,
-            phone: formData.phone,
-            city: formData.city,
             pet_type: formData.petType,
             pet_age: formData.petAge,
             pet_breed: formData.petBreed,
@@ -130,33 +122,10 @@ export const Survey = () => {
                 {error}
               </div>
             )}
-            
-            {/* Section 1: Basic Details */}
-            <div className="space-y-8">
-              <h3 className={`${sectionTitleClass} text-[var(--color-bruniverse-peach)]`} style={{ borderColor: 'var(--color-bruniverse-peach)' }}>1. Your Details</h3>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <label className={labelClass}>Full Name *</label>
-                  <input required type="text" name="fullName" value={formData.fullName} onChange={handleChange} className={inputClass} />
-                </div>
-                <div>
-                  <label className={labelClass}>Email Address *</label>
-                  <input required type="email" name="email" value={formData.email} onChange={handleChange} className={inputClass} />
-                </div>
-                <div>
-                  <label className={labelClass}>Phone Number *</label>
-                  <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className={inputClass} />
-                </div>
-                <div>
-                  <label className={labelClass}>City *</label>
-                  <input required type="text" name="city" value={formData.city} onChange={handleChange} className={inputClass} />
-                </div>
-              </div>
-            </div>
 
-            {/* Section 2: Pet Details */}
+            {/* Section 1: Pet Details */}
             <div className="space-y-8">
-              <h3 className={`${sectionTitleClass} text-[var(--color-bruniverse-green)]`} style={{ borderColor: 'var(--color-bruniverse-green)' }}>2. Pet Details</h3>
+              <h3 className={`${sectionTitleClass} text-[var(--color-bruniverse-green)]`} style={{ borderColor: 'var(--color-bruniverse-green)' }}>1. Pet Details</h3>
               
               <div>
                 <label className={labelClass}>What type of pet do you have? *</label>
@@ -181,9 +150,9 @@ export const Survey = () => {
               </div>
             </div>
 
-            {/* Section 3: Shopping Habits */}
+            {/* Section 2: Shopping Habits */}
             <div className="space-y-8">
-              <h3 className={`${sectionTitleClass} text-[var(--color-bruniverse-purple)]`} style={{ borderColor: 'var(--color-bruniverse-purple)' }}>3. Habits</h3>
+              <h3 className={`${sectionTitleClass} text-[var(--color-bruniverse-purple)]`} style={{ borderColor: 'var(--color-bruniverse-purple)' }}>2. Habits</h3>
               
               <div>
                 <label className={labelClass}>What do you buy MOST often for your pet? *</label>
@@ -240,9 +209,9 @@ export const Survey = () => {
               </div>
             </div>
 
-            {/* Section 4: Subscriptions & Extras */}
+            {/* Section 3: Subscriptions & Extras */}
             <div className="space-y-8">
-              <h3 className={`${sectionTitleClass} text-[var(--color-bruniverse-yellow)]`} style={{ borderColor: 'var(--color-bruniverse-yellow)' }}>4. Subscriptions</h3>
+              <h3 className={`${sectionTitleClass} text-[var(--color-bruniverse-yellow)]`} style={{ borderColor: 'var(--color-bruniverse-yellow)' }}>3. Subscriptions</h3>
               
               <div>
                 <label className={labelClass}>Interested in curated pet boxes tailored to your pet? *</label>

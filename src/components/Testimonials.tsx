@@ -46,13 +46,19 @@ export const Testimonials = () => {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
-    if (carouselRef.current) {
-      setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
-    }
+    const handleResize = () => {
+      if (carouselRef.current) {
+        setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
+      }
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
-    <section className="py-24 bg-[var(--color-bruniverse-green)] overflow-hidden relative">
+    <section className="py-24 bg-[var(--color-bruniverse-green)] overflow-visible relative">
       <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(var(--color-bruniverse-dark) 2px, transparent 2px)', backgroundSize: '30px 30px' }}></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -69,15 +75,30 @@ export const Testimonials = () => {
           </motion.div>
           
           <div className="hidden md:flex gap-4">
-             <div className="w-12 h-12 neo-border rounded-full flex items-center justify-center bg-white text-2xl neo-shadow cursor-not-allowed">←</div>
-             <div className="w-12 h-12 neo-border rounded-full flex items-center justify-center bg-[var(--color-bruniverse-yellow)] text-2xl neo-shadow animate-pulse cursor-grab">→</div>
+             <motion.button 
+               whileTap={{ scale: 0.9 }}
+               onClick={() => {
+                 if (carouselRef.current) carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+               }}
+               className="w-14 h-14 neo-border rounded-full flex items-center justify-center bg-white text-2xl neo-shadow cursor-pointer hover:bg-[var(--color-bruniverse-yellow)] transition-colors"
+             >
+               ←
+             </motion.button>
+             <div className="w-14 h-14 neo-border rounded-full flex items-center justify-center bg-[var(--color-bruniverse-yellow)] text-2xl neo-shadow animate-pulse cursor-grab">→</div>
           </div>
         </div>
 
-        <motion.div ref={carouselRef} className="cursor-grab overflow-hidden py-10" whileTap={{ cursor: "grabbing" }}>
+        <motion.div 
+          ref={carouselRef} 
+          className="cursor-grab overflow-hidden py-10" 
+          whileTap={{ cursor: "grabbing" }}
+        >
           <motion.div 
             drag="x" 
             dragConstraints={{ right: 0, left: -width }} 
+            dragElastic={0.2}
+            dragMomentum={true}
+            dragTransition={{ power: 0.2, timeConstant: 200 }}
             className="flex gap-8 lg:gap-12 pl-4"
           >
             {testimonials.map((testimonial) => (
@@ -104,6 +125,13 @@ export const Testimonials = () => {
             ))}
           </motion.div>
         </motion.div>
+      </div>
+
+      {/* Torn edge bottom divider connecting to Footer (Dark) */}
+      <div className="wave-divider" style={{ bottom: '-4px', zIndex: 5 }}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-[80px]">
+          <path d="M0,120 V50 Q60,30 120,60 T240,40 T360,70 T480,50 T600,80 T720,40 T840,70 T960,50 T1080,80 T1200,60 V120 Z" className="fill-[var(--color-bruniverse-dark)]"></path>
+        </svg>
       </div>
     </section>
   );
