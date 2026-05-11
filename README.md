@@ -1,73 +1,46 @@
-# React + TypeScript + Vite
+# Bruniverse 🐾
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **Bruniverse**, a premium Neobrutalist pet parent platform. This website features a high-energy "Awwwards-winning" design with bold colors, thick borders, and bouncy animations.
 
-Currently, two official plugins are available:
+## ✨ Features
+- **Neobrutalist Design**: Custom "torn paper" dividers, hard shadows, and vibrant pastel palettes.
+- **Interactive UI**: Powered by `framer-motion` for smooth, springy transitions and magnetic interactions.
+- **Multi-page Architecture**:
+  - **Landing Page**: Engaging Hero, Categories, and Pricing sections.
+  - **Registration (`/register`)**: Early access form for pet parents.
+  - **Survey (`/survey`)**: Deep insights into pet habits and needs.
+  - **User Profiles (`/profile`)**: Dashboard for users to view their pet's data.
+  - **Admin Dashboard (`/admin`)**: Secure view for the owner to see all collected data.
+- **Supabase Integration**: Real-time database and authentication.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Quick Start
 
-## React Compiler
+1. **Clone and Install**
+   ```bash
+   npm install
+   ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. **Set Up Supabase**
+   - Follow the [Supabase Setup Guide](./SUPABASE_SETUP.md) to create your database tables and get your API keys.
 
-## Expanding the ESLint configuration
+3. **Configure Environment**
+   - Create a `.env` file in the root folder:
+   ```env
+   VITE_SUPABASE_URL=your_url
+   VITE_SUPABASE_ANON_KEY=your_key
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+4. **Run Development Server**
+   ```bash
+   npm run dev
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠 Tech Stack
+- **React + Vite**
+- **Tailwind CSS** (v4.0)
+- **Framer Motion** (Animations)
+- **Supabase** (Backend & Auth)
+- **React Icons**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+Build with 💗 for pet parents.

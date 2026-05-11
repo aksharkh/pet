@@ -35,6 +35,8 @@ export const Survey = () => {
     setError(null);
     
     try {
+      const { data: { user } } = await supabase.auth.getUser();
+      
       const { error: supabaseError } = await supabase
         .from('pet_parents_survey')
         .insert([
@@ -51,7 +53,8 @@ export const Survey = () => {
             subscribe_reason: formData.subscribeReason,
             instagram: formData.instagram,
             stay_updated: formData.stayUpdated,
-            whatsapp: formData.whatsapp
+            whatsapp: formData.whatsapp,
+            email: user?.email || null
           }
         ]);
         
