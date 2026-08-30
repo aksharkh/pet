@@ -8,7 +8,8 @@ export const Registration = () => {
     fullName: '',
     email: '',
     phone: '',
-    city: ''
+    city: '',
+    password: ''
   });
   
   const [loading, setLoading] = useState(false);
@@ -26,10 +27,27 @@ export const Registration = () => {
     setError(null);
     
     try {
+      // 1. Sign up the user in Supabase Auth
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            full_name: formData.fullName,
+            phone: formData.phone,
+            city: formData.city
+          }
+        }
+      });
+
+      if (authError) throw authError;
+
+      // 2. Insert extra data into registrations table
       const { error: supabaseError } = await supabase
         .from('registrations')
         .insert([
           {
+            id: authData.user?.id, // Use the auth user id if possible
             full_name: formData.fullName,
             email: formData.email,
             phone: formData.phone,
@@ -79,6 +97,15 @@ export const Registration = () => {
 
   return (
     <div className="min-h-screen bg-[var(--color-bruniverse-yellow)] pt-32 pb-20 relative overflow-hidden">
+      {/* Home Button */}
+      <Link 
+        to="/" 
+        className="absolute top-8 left-8 z-50 bg-white p-3 neo-border rounded-full neo-shadow hover:scale-110 transition-transform group"
+      >
+        <span className="text-2xl group-hover:-translate-x-1 inline-block transition-transform">←</span>
+        <span className="ml-2 font-fredoka font-bold uppercase">Home</span>
+      </Link>
+
       {/* Decorative background grid */}
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(var(--color-bruniverse-dark) 2px, transparent 2px)', backgroundSize: '30px 30px' }}></div>
       
@@ -137,6 +164,11 @@ export const Registration = () => {
             <div>
               <label className={labelClass}>City *</label>
               <input required type="text" name="city" value={formData.city} onChange={handleChange} className={inputClass} placeholder="Mumbai, Delhi..." />
+            </div>
+
+            <div>
+              <label className={labelClass}>Create Password *</label>
+              <input required type="password" name="password" value={formData.password} onChange={handleChange} className={inputClass} placeholder="••••••••" />
             </div>
 
             <motion.button 

@@ -72,11 +72,19 @@ VITE_SUPABASE_ANON_KEY=your_anon_key_here
 
 ---
 
-## Step 4: Enable Email Login (Optional)
+## Step 4: Enable Auth Providers (Mandatory)
 If you want users to log in to their pet profiles:
-1. Go to **Authentication** -> **Providers**.
-2. Ensure **Email** is enabled.
-3. Turn off "Confirm Email" if you want users to log in immediately without checking their inbox (good for testing).
+
+### Email Auth:
+1. Go to **Authentication** -> **Providers** -> **Email**.
+2. Ensure **Enabled** is ON.
+3. **Confirm Email**: If you want to skip email verification during testing, turn **Confirm email** OFF.
+
+### Phone Auth:
+1. Go to **Authentication** -> **Providers** -> **Phone**.
+2. Ensure **Enabled** is ON.
+3. You will need an SMS provider (like Twilio) for real SMS, but you can use **Phone testing numbers** for development.
+4. Go to **Authentication** -> **Configuration** and add a test phone number and a test OTP code (e.g., `+919999999999` and `123456`).
 
 ---
 

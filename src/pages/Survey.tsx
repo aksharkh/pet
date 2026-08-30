@@ -101,6 +101,15 @@ export const Survey = () => {
 
   return (
     <div className="min-h-screen bg-[var(--color-bruniverse-blue)] pt-32 pb-20 relative overflow-hidden">
+      {/* Home Button */}
+      <Link 
+        to="/" 
+        className="absolute top-8 left-8 z-50 bg-white p-3 neo-border rounded-full neo-shadow hover:scale-110 transition-transform group"
+      >
+        <span className="text-2xl group-hover:-translate-x-1 inline-block transition-transform">←</span>
+        <span className="ml-2 font-fredoka font-bold uppercase">Home</span>
+      </Link>
+
       {/* Decorative background grid */}
       <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'linear-gradient(var(--color-bruniverse-dark) 2px, transparent 2px), linear-gradient(90deg, var(--color-bruniverse-dark) 2px, transparent 2px)', backgroundSize: '40px 40px' }}></div>
       

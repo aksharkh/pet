@@ -40,11 +40,37 @@ const plans = [
   }
 ];
 
+const loadRazorpayScript = () => {
+  return new Promise((resolve) => {
+    if ((window as any).Razorpay) {
+      resolve(true);
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    script.onload = () => {
+      resolve(true);
+    };
+    script.onerror = () => {
+      resolve(false);
+    };
+    document.body.appendChild(script);
+  });
+};
+
 export const PricingSubscription = () => {
   const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
 
   const handleSubscribe = async (planId: string) => {
     setLoadingPlan(planId);
+    
+    const loaded = await loadRazorpayScript();
+    if (!loaded) {
+      alert("Payment system currently unavailable. Please check your connection or disable your ad blocker.");
+      setLoadingPlan(null);
+      return;
+    }
     
     const mockOptions = {
       key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'YOUR_RAZORPAY_KEY',
@@ -95,9 +121,9 @@ export const PricingSubscription = () => {
             initial={{ scale: 0.9, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
-            className="text-5xl lg:text-7xl font-fredoka font-black text-[var(--color-bruniverse-dark)] mb-6 uppercase tracking-tight"
+            className="text-4xl md:text-5xl lg:text-7xl font-fredoka font-black text-[var(--color-bruniverse-dark)] mb-6 uppercase tracking-tight"
           >
-            Because Your Pet <br/> <span className="bg-white px-6 py-2 neo-border inline-block rotate-2 mt-4 text-[var(--color-bruniverse-blue)]">Deserves the Best</span>
+            Because Your Pet <br/> <span className="bg-white px-6 py-2 neo-border inline-block rotate-2 mt-4 text-[var(--color-bruniverse-blue)] text-3xl md:text-5xl lg:text-7xl">Deserves the Best</span>
           </motion.h2>
         </div>
 

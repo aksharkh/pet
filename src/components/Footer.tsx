@@ -6,15 +6,27 @@ export const Footer = () => {
   return (
     <footer className="bg-[var(--color-bruniverse-dark)] text-white pt-24 pb-8 relative overflow-hidden">
       
-      {/* Animated peeking dog */}
-      <motion.img 
-        animate={{ y: [40, 0, 40] }}
+      {/* Animated peeking cat */}
+      <motion.div
+        animate={{ y: [45, 10, 45] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpqZWVvOHBkZm8xMW1wZmd4bmIwcXVyaDNnbW84ZXo2cTFkZmwwdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif"
-        alt="Peeking Cat"
-        className="absolute top-0 right-10 w-32 md:w-48 z-10 opacity-80"
-        style={{ filter: 'grayscale(100%) sepia(100%) hue-rotate(180deg) saturate(300%)' }}
-      />
+        className="absolute top-0 right-10 w-32 md:w-48 h-24 md:h-36 z-10 opacity-80 pointer-events-none"
+      >
+        <svg viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+          {/* Ears */}
+          <path d="M20 40 L30 10 L45 35 Z" fill="var(--color-bruniverse-peach)" stroke="white" strokeWidth="4" strokeLinejoin="round" />
+          <path d="M80 40 L70 10 L55 35 Z" fill="var(--color-bruniverse-peach)" stroke="white" strokeWidth="4" strokeLinejoin="round" />
+          {/* Head */}
+          <path d="M10 80 C10 40 90 40 90 80 Z" fill="var(--color-bruniverse-yellow)" stroke="white" strokeWidth="4" />
+          {/* Eyes */}
+          <ellipse cx="35" cy="65" rx="6" ry="8" fill="white" stroke="var(--color-bruniverse-dark)" strokeWidth="2" />
+          <ellipse cx="65" cy="65" rx="6" ry="8" fill="white" stroke="var(--color-bruniverse-dark)" strokeWidth="2" />
+          <circle cx="35" cy="65" r="3" fill="var(--color-bruniverse-dark)" />
+          <circle cx="65" cy="65" r="3" fill="var(--color-bruniverse-dark)" />
+          {/* Nose */}
+          <polygon points="50,71 46,67 54,67" fill="white" />
+        </svg>
+      </motion.div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="grid md:grid-cols-12 gap-12 mb-20">
@@ -42,7 +54,7 @@ export const Footer = () => {
             <h4 className="font-fredoka text-2xl font-black mb-6 uppercase tracking-wider border-b-4 border-gray-600 pb-2 inline-block">Explore</h4>
             <ul className="space-y-4 font-outfit text-xl font-bold">
               <li><Link to="/" className="hover:text-[var(--color-bruniverse-blue)] transition-colors hover:pl-2">Home</Link></li>
-              <li><a href="#services" className="hover:text-[var(--color-bruniverse-green)] transition-colors hover:pl-2">Services</a></li>
+              <li><a href="/#services" className="hover:text-[var(--color-bruniverse-green)] transition-colors hover:pl-2">Services</a></li>
               <li><Link to="/survey" className="hover:text-[var(--color-bruniverse-peach)] transition-colors hover:pl-2">Pet Survey</Link></li>
               <li><Link to="/register" className="hover:text-[var(--color-bruniverse-yellow)] transition-colors hover:pl-2">Join Community</Link></li>
             </ul>
